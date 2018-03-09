@@ -88,8 +88,3 @@ for($i = 2; $i<$argc; $i++)
 
 $formater = new Formater();
 echo "Formated value: " . $formater->formatOutput($total) . "\n";
-
-
-
-
-
