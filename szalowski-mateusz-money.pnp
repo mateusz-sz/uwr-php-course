@@ -95,4 +95,4 @@ echo "Formated value: " . $formater->formatOutput($total) . "\n";
 
 
 
-//
+?>
