@@ -1,0 +1,1 @@
+{"id":15218019466627,"name":"Johnny Walker","price":{"amount":"42","currency":"PLN"}}
