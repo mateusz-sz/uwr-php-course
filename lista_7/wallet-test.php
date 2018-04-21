@@ -11,10 +11,6 @@ require __DIR__ . "/vendor/autoload.php";
 use Money\Money;
 use Money\Currency;
 use Wallet\Wallet;
-use Events\Money_deposited;
-//use Events\Money_withdrew;
-//use Events\Wallet_activated;
-//use Events\Wallet_deactivated;
 
 function displayWallet(Wallet $wallet) {
     echo PHP_EOL;
