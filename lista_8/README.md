@@ -104,4 +104,3 @@ PING!
 ### Uwagi
 
 Program będzie uruchamiany z lini poleceń.
-
