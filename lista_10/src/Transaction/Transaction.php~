@@ -1,0 +1,49 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: m
+ * Date: 5/31/18
+ * Time: 9:07 PM
+ */
+
+namespace Transaction;
+
+//use Money\Money;
+//use Ramsey\Uuid\Uuid;
+//use MyClabs\Enum\Enum;
+
+/**
+ * @Entity
+ * @Table(name="transactions")
+ */
+class Transaction
+{
+    /**
+     * @Id
+     * @GeneratedValue
+     * @Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @Column(type="string")
+     */
+    private $amount;
+
+    /**
+     * @Column(type="string")
+     */
+    private $fromAccount;
+
+    /**
+     * @Column(type="string")
+     */
+    private $toAccount;
+
+    /**
+     * @Column(type="string")
+     */
+    private $status;
+
+
+}
