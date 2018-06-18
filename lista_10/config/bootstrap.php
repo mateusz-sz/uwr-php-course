@@ -2,15 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: m
- * Date: 5/31/18
- * Time: 10:53 PM
+ * Date: 6/3/18
+ * Time: 4:08 PM
  */
 
-require_once "vendor/autoload.php";
+require_once __DIR__ . "/../vendor/autoload.php";
+use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\DriverManager;
 
 // Setup Doctrine
 $configuration = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
-    $paths = [__DIR__ . '/src/Transaction'],
+    $paths = [__DIR__ . '/../src/Transaction'],
     $isDevMode = true
 );
 
@@ -26,6 +28,12 @@ $connection_parameters = [
 // Get the entity manager
 $entity_manager = Doctrine\ORM\EntityManager::create($connection_parameters, $configuration);
 
+//Register Uuid object type
+Type::addType('uuid', 'Ramsey\Uuid\Doctrine\UuidType');
+
+
+$config = new \Doctrine\DBAL\Configuration();
+$DBALConnection = DriverManager::getConnection($connection_parameters, $config);
 
 
 

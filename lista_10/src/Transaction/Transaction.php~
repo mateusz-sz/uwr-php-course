@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: m
- * Date: 5/31/18
- * Time: 9:07 PM
+ * Date: 6/6/18
+ * Time: 7:31 PM
  */
 
 namespace Transaction;
 
-//use Money\Money;
-//use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
+use Money\Money;
 //use MyClabs\Enum\Enum;
 
 /**
@@ -19,31 +19,49 @@ namespace Transaction;
 class Transaction
 {
     /**
+     * @var Uuid
+     *
+     * Klasa Uuid pochodzi z biblioteki ramsey/uuid
+     *
      * @Id
      * @GeneratedValue
-     * @Column(type="integer")
+     * @Column(type="smallint")
      */
-    private $id;
+    private $Uuid;
 
     /**
-     * @Column(type="string")
+     * @var int
+     *
+     * @Column(type="smallint")
      */
     private $amount;
 
     /**
+     * @var string
+     *
      * @Column(type="string")
      */
     private $fromAccount;
 
     /**
+     * @var string
+     *
      * @Column(type="string")
      */
     private $toAccount;
 
     /**
-     * @Column(type="string")
+     * @var boolean
+     *
+     * Klasa Status rozszerza klasę Enum z biblioteki myclabs/php-enum i reprezentuje jeden ze statusów konta:
+     * - ACTIVE
+     * - BLOCKED
+     * - SUSPENDED
+     * - CLOSED
+     *
+     * @Column(type="boolean")
      */
     private $status;
 
-
+    // ...
 }

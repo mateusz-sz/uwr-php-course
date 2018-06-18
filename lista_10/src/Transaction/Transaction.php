@@ -2,156 +2,160 @@
 /**
  * Created by PhpStorm.
  * User: m
- * Date: 5/31/18
- * Time: 9:07 PM
+ * Date: 6/6/18
+ * Time: 7:31 PM
  */
 
 namespace Transaction;
 
-use Doctrine\ORM\Mapping as ORM;
-//use Money\Money;
-//use Ramsey\Uuid\Uuid;
-//use MyClabs\Enum\Enum;
+use Ramsey\Uuid\Uuid;
+use Money\Money;
+use TransactionStatus\Status;
 
 /**
- * @ORM\Entity(repositoryClass="TransactionRepository\TransactionRepository")
- * @ORM\Table(name="transactions")
- *
+ * @Entity
+ * @Table(name="transactions")
  */
 class Transaction
 {
     /**
+     * @var Uuid
+     *
      * @Id
-     * @GeneratedValue
-     * @Column(type="integer")
+     * @Column(type="uuid", unique=true)
+     * @GeneratedValue(strategy="CUSTOM")
+     * @CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
-    private $id;
+    private $Uuid;
 
     /**
-     * @Column(type="string")
+     * @var Money
+     *
+     * @Column(type="object")
      */
     private $amount;
 
     /**
+     * @var string
+     *
      * @Column(type="string")
      */
     private $fromAccount;
 
     /**
+     * @var string
+     *
      * @Column(type="string")
      */
     private $toAccount;
 
     /**
-     * @Column(type="string")
+     * @var Status
+     *
+     * Klasa Status rozszerza klasę Enum z biblioteki myclabs/php-enum i reprezentuje jeden ze statusów konta:
+     * - ACTIVE
+     * - BLOCKED
+     * - SUSPENDED
+     * - CLOSED
+     *
+     * @Column(type="object")
      */
     private $status;
 
-
-
     /**
-     * Get id.
-     *
-     * @return int
+     * Transaction constructor.
+     * @param Money $amount
+     * @param string $fromAccount
+     * @param string $toAccount
+     * @param Status $status
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set amount.
-     *
-     * @param string $amount
-     *
-     * @return Transaction
-     */
-    public function setAmount($amount)
+    public function __construct(Money $amount, string $fromAccount, string $toAccount, Status $status)
     {
         $this->amount = $amount;
-
-        return $this;
+        $this->fromAccount = $fromAccount;
+        $this->toAccount = $toAccount;
+        $this->status = $status;
     }
 
     /**
-     * Get amount.
-     *
-     * @return string
+     * @param Uuid $Uuid
      */
-    public function getAmount()
+    public function setUuid(Uuid $Uuid): void
+    {
+        $this->Uuid = $Uuid;
+    }
+
+    /**
+     * @return Money
+     */
+    public function getAmount(): Money
     {
         return $this->amount;
     }
 
     /**
-     * Set fromAccount.
-     *
-     * @param string $fromAccount
-     *
-     * @return Transaction
+     * @param Money $amount
      */
-    public function setFromAccount($fromAccount)
+    public function setAmount(Money $amount): void
     {
-        $this->fromAccount = $fromAccount;
-
-        return $this;
+        $this->amount = $amount;
     }
 
     /**
-     * Get fromAccount.
-     *
      * @return string
      */
-    public function getFromAccount()
+    public function getFromAccount(): string
     {
         return $this->fromAccount;
     }
 
     /**
-     * Set toAccount.
-     *
-     * @param string $toAccount
-     *
-     * @return Transaction
+     * @param string $fromAccount
      */
-    public function setToAccount($toAccount)
+    public function setFromAccount(string $fromAccount): void
     {
-        $this->toAccount = $toAccount;
-
-        return $this;
+        $this->fromAccount = $fromAccount;
     }
 
     /**
-     * Get toAccount.
-     *
      * @return string
      */
-    public function getToAccount()
+    public function getToAccount(): string
     {
         return $this->toAccount;
     }
 
     /**
-     * Set status.
-     *
-     * @param string $status
-     *
-     * @return Transaction
+     * @param string $toAccount
      */
-    public function setStatus($status)
+    public function setToAccount(string $toAccount): void
     {
-        $this->status = $status;
-
-        return $this;
+        $this->toAccount = $toAccount;
     }
 
     /**
-     * Get status.
-     *
-     * @return string
+     * @return Status
      */
-    public function getStatus()
+    public function getStatus(): Status
     {
         return $this->status;
     }
+
+    /**
+     * @param Status $status
+     */
+    public function setStatus(Status $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUuid()
+    {
+        return $this->Uuid;
+    }
+
+
 }
