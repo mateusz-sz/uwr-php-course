@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/trash/vendor/composer" />
+      <path value="$PROJECT_DIR$/trash/vendor/money/money" />
+      <path value="$PROJECT_DIR$/trash/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/trash/vendor/silex/silex" />
+      <path value="$PROJECT_DIR$/trash/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/trash/vendor/pimple/pimple" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/trash/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/trash/vendor/symfony/polyfill-php70" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
+</project>
