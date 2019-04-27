@@ -24,6 +24,7 @@ class GamificationAccount
         $this->id = time() . rand(10, 99);
         $this->eMail = $email;
         $this->description = $description;
+        $this->pointBalance = 0;
         $this->status = true;
     }
 

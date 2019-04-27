@@ -18,7 +18,7 @@ require 'vendor/autoload.php';
 
 
 $app = new \Slim\App();
-$app->post('/add-account/{email}', function ($request, $response, $args) {
+$app->post('/account/new/{email}', function ($request, $response, $args) {
     $account = new GamificationAccount(
         $args["email"],
         ""
@@ -32,8 +32,18 @@ $app->post('/add-account/{email}', function ($request, $response, $args) {
         "status" => $account->isStatus(),
     ];
 
-    
+    file_put_contents("account_data/account_" . $account->getId(),
+        json_encode($accountArray));
+
+    echo "New account with e-mail " . $account->getEMail() . " has been added.";
+
+    return $response;
 });
 
 
-$app->run();
+try {
+    $app->run();
+} catch (Exception $e) {
+    echo "Slim exception: " . $e->getMessage();
+}
+
